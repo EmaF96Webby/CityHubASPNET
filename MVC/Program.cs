@@ -1,12 +1,23 @@
 using CL.Data;
-using Microsoft.EntityFrameworkCore;
 using CL.Seeders;
+using Microsoft.EntityFrameworkCore;
+using MVC.Services.Email;
+using RazorLight;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+var smtpSection = builder.Configuration.GetSection("Smtp");
+builder.Services.Configure<SmtpOptions>(smtpSection);
+builder.Services.AddSingleton<SmtpOptionsProvider>();
+builder.Services.AddSingleton<SmtpOptions>(SmtpOptionsProvider.GetOptions);
+builder.Services.AddSingleton<RazorLightEngineProvider>();
+builder.Services.AddSingleton<RazorLightEngine>(RazorLightEngineProvider.GetEngine);
+builder.Services.AddScoped<IEmailSender, SmtpEmailSender>();
+builder.Services.AddScoped<IRazorRenderer, RazorRenderer>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

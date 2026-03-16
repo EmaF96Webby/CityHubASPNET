@@ -7,20 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CL.Data;
 using CL.Models;
+using MVC.Services.Email;
 
 namespace MVC.Controllers
 {
     public class BookingController : Controller
     {
         private readonly ApplicationDbContext _context;
+          private readonly IEmailSender _emailSender;
 
-        public BookingController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+          public BookingController(ApplicationDbContext context, IEmailSender emailSender)
+          {
+               _context = context;
+               _emailSender = emailSender;
+          }
 
-        // GET: Booking
-        public async Task<IActionResult> Index()
+          // GET: Booking
+          public async Task<IActionResult> Index()
         {
             return View(await _context.Bookings.ToListAsync());
         }
@@ -60,6 +63,7 @@ namespace MVC.Controllers
             {
                 _context.Add(booking);
                 await _context.SaveChangesAsync();
+                await _emailSender.SendBookingConfirmedAsync(booking, booking.Email);
                 return RedirectToAction(nameof(Index));
             }
             return View(booking);
