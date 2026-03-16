@@ -9,3 +9,5 @@ C:\Users\fegat\source\repos\CityHubASPNET\CL\obj\Debug\net10.0\CL.dll
 C:\Users\fegat\source\repos\CityHubASPNET\CL\obj\Debug\net10.0\refint\CL.dll
 C:\Users\fegat\source\repos\CityHubASPNET\CL\obj\Debug\net10.0\CL.pdb
 C:\Users\fegat\source\repos\CityHubASPNET\CL\obj\Debug\net10.0\ref\CL.dll
+C:\Users\fegat\source\repos\CityHubASPNET\CL\obj\Debug\net10.0\CL.csproj.AssemblyReference.cache
+C:\Users\fegat\source\repos\CityHubASPNET\CL\obj\Debug\net10.0\CL.sourcelink.json
