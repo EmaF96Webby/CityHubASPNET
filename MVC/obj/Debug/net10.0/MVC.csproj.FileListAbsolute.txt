@@ -339,4 +339,5 @@ C:\Users\fegat\source\repos\CityHubASPNET\MVC\bin\Debug\net10.0\ru\Microsoft.Cod
 C:\Users\fegat\source\repos\CityHubASPNET\MVC\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\fegat\source\repos\CityHubASPNET\MVC\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\fegat\source\repos\CityHubASPNET\MVC\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\fegat\source\repos\CityHubASPNET\MVC\bin\Debug\net10.0\Bogus.dll
 C:\Users\fegat\source\repos\CityHubASPNET\MVC\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

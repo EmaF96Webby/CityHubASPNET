@@ -1,5 +1,6 @@
 using CL.Data;
 using Microsoft.EntityFrameworkCore;
+using CL.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+using (scope)
+{
+     var services = scope.ServiceProvider;
+     SeedData.Initialize(services);
+}
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
