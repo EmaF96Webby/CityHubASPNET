@@ -12,12 +12,12 @@ public class SmtpEmailSender : IEmailSender
 
      private BodyBuilder _builder = null!;
 
-     public SmtpEmailSender(SmtpOptions options, IRazorRenderer razor)
+     public SmtpEmailSender(IOptions<SmtpOptions> options, IRazorRenderer razor)
      {
-          _options = options;
+          _options = options.Value;
           _razor = razor;
      }
-
+     
      public async Task SendBookingConfirmedAsync(Booking booking, string toEmail)
      {
           MimeMessage message = new MimeMessage();
