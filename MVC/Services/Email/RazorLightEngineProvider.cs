@@ -24,9 +24,9 @@ public class RazorLightEngineProvider
 
      public static RazorLightEngine GetEngine(IServiceProvider serviceProvider)
      {
-          var provider = serviceProvider.GetRequiredService<RazorLightEngineProvider>();
+          var service = serviceProvider.GetRequiredService<RazorLightEngineProvider>();
 
-          var engine = provider.Engine;
+          var engine = service.Engine;
 
           return engine;
      }
