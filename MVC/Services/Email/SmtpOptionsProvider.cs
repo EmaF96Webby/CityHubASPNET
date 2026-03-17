@@ -6,18 +6,19 @@ public class SmtpOptionsProvider
 {
      public SmtpOptions Options { get; }
 
-     public SmtpOptionsProvider(IOptions<SmtpOptions> options)
+     public SmtpOptionsProvider(IOptions<SmtpOptions> optionsWrapper)
      {
-          Options = options.Value;
+          var options = optionsWrapper.Value;
+
+          Options = options;
      }
 
      public static SmtpOptions GetOptions(IServiceProvider serviceProvider)
      {
-          var optionsWrapper = serviceProvider.GetRequiredService<IOptions<SmtpOptions>>();
+          var service = serviceProvider.GetRequiredService<SmtpOptionsProvider>();
 
-          var options = optionsWrapper.Value;
+          var options = service.Options;
 
           return options;
      }
-
 }
