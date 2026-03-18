@@ -11,9 +11,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 var smtpSection = builder.Configuration.GetSection("Smtp");
 builder.Services.Configure<SmtpOptions>(smtpSection);
-builder.Services.AddRazorLightEngine();
+builder.Services.AddSingleton<RazorLightEngine>(RazorLightEngineFactory.Create);
 builder.Services.AddScoped<IEmailSender, SmtpEmailSender>();
-builder.Services.AddScoped<IRazorRenderer, RazorRenderer>();
+builder.Services.AddSingleton<IRazorRenderer, RazorRenderer>();
 
 builder.Services.AddControllersWithViews();
 
